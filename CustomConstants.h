@@ -4,17 +4,17 @@
 #define __CUSTOMCONSTANTS_h_h
 
 #if defined(ARDUINO) && ARDUINO >= 100
-	#include "arduino.h"
+#include "arduino.h"
 #else
-	#include "WProgram.h"
+#include "WProgram.h"
 #endif
 
 #include <string>
 
 
-namespace CustomConstants 
+namespace CustomConstants
 {
-	#define MAX_DECIBEL_SAMPLE_COUNT 20
+#define MAX_DECIBEL_SAMPLE_COUNT 20
 
 	extern const unsigned long baudRate;
 	//const int MAX_DECIBEL_SAMPLE_COUNT;
@@ -30,6 +30,9 @@ namespace CustomConstants
 
 	extern const String javaServerIP;
 	extern const short javaServerPort;
+
+	extern const uint8_t dhtPin;
+	extern const uint8_t dhtType;
 }
 
 #endif
