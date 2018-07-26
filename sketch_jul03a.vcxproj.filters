@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\utilities">
+      <UniqueIdentifier>{6774551e-9b53-4f20-be85-9f7e1a3d15e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\utilities\Free Functions">
+      <UniqueIdentifier>{0cc07c7f-d93f-410d-867b-31bacc751e59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\utilities\Handlers">
+      <UniqueIdentifier>{5663b7e8-c7e1-4703-90b7-b6be3624ba7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DataClasses">
+      <UniqueIdentifier>{e93f6d91-81c2-48ca-8c05-c81a11c15d42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Sensors">
+      <UniqueIdentifier>{b912e82f-770d-4740-ac7e-d2bf7dadc5dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Constants">
+      <UniqueIdentifier>{bbbfea6c-31eb-466d-9563-abb5ee3d31ce}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sketch_jul03a.ino" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="__vm\.sketch_jul03a.vsarduino.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WifiHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomConstants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LEDHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LEDColor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SensorHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundPressureLevelSensor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DecibelData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InitialSetup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Util.cpp">
+      <Filter>Source Files\utilities\Free Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientHandler.cpp">
+      <Filter>Source Files\utilities\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="LEDHandler.cpp">
+      <Filter>Source Files\utilities\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="SensorHandler.cpp">
+      <Filter>Source Files\utilities\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="WifiHandler.cpp">
+      <Filter>Source Files\utilities\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="DecibelData.cpp">
+      <Filter>Source Files\DataClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="LEDColor.cpp">
+      <Filter>Source Files\DataClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundPressureLevelSensor.cpp">
+      <Filter>Source Files\Sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="InitialSetup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomConstants.cpp">
+      <Filter>Source Files\Constants</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
