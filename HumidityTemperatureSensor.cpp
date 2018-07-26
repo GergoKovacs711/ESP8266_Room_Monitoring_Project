@@ -1,7 +1,8 @@
 #include "HumidityTemperatureSensor.h"
 
 HumidityTemperatureSensor::HumidityTemperatureSensor() :_dhtSensorPin(10),
-_dhtSensor(CustomConstants::dhtPin, CustomConstants::dhtType)
+														_dhtSensor(CustomConstants::dhtPin,
+														CustomConstants::dhtType)
 
 {
 }
@@ -20,19 +21,4 @@ void HumidityTemperatureSensor::update(void)
 		temperature = tempTemperature;
 		humidity = tempHumidity;
 	}
-}
-
-void HumidityTemperatureSensor::testTeglanak() 
-{	
-	if (true)
-		if (true)
-			if (true)
-				true;
-			else
-				false;
-		else
-			false;
-	else
-		false;
-			
 }

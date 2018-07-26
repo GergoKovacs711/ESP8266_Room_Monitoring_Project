@@ -9,6 +9,7 @@
 SensorHandler sensorHandler;
 
 SensorHandler::SensorHandler() : _splSensor(),
+								 _hdtSensor(),
 								 _splSampleCount(20),
 								 _readIndex(0), 
 								 _totalDecibels(0.0), 
@@ -40,6 +41,7 @@ int SensorHandler::getSampleCount()
 void SensorHandler::updateSensors()
 {
 	_splSensor.update();                        // calculates volts from sensor data
+	_hdtSensor.update();
 	sensorDataSmoother();
 }
 
@@ -51,6 +53,16 @@ void SensorHandler::updateLED()
 float SensorHandler::getAverageDecibels(void)
 {
 	return (float)(_averageDecibels);
+}
+
+float SensorHandler::getHumidity()
+{
+	return _hdtSensor.humidity;
+}
+
+float SensorHandler::getTemperature()
+{
+	return _hdtSensor.temperature;
 }
 
 void SensorHandler::sensorDataSmoother()
@@ -85,6 +97,6 @@ void SensorHandler::changeSPLSampleWindow(int window)
 
 int SensorHandler::getSPLSampleWindow()
 {
-	return 1;
+	return _splSensor.getSampleWindow();
 }
 

@@ -11,13 +11,15 @@
 
 #include "SoundPressureLevelSensor.h"
 #include "DecibelData.h"
-//#include "CustomConstants.h"
+#include "HumidityTemperatureSensor.h"
 
 class SensorHandler
 {	
  private:
 	 
 	 SoundPressureLevelSensor _splSensor;
+	 
+	 HumidityTemperatureSensor _hdtSensor;
 
 	 short _splSampleCount;
 	 //std::vector<double> _splDecibelReadings;
@@ -41,6 +43,8 @@ class SensorHandler
 	 void updateLED(void);
 
 	 float getAverageDecibels(void);
+	 float getHumidity();
+	 float getTemperature();
 
 	 DecibelData getDecibelData();
 
