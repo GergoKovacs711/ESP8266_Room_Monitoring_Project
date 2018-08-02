@@ -31,8 +31,8 @@ namespace CustomConstants
 	extern const String javaServerIP;
 	extern const short javaServerPort;
 
-	extern const uint8_t dhtPin;
-	extern const uint8_t dhtType;
+	extern const int dhtPin;
+	extern const int dhtType;
 }
 
 #endif

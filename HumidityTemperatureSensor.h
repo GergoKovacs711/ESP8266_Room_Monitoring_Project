@@ -9,13 +9,12 @@
 #include "WProgram.h"
 #endif
 
-#include <DHT.h>
+#include "DHT_sensor_library_for_ESPx/DHTesp.h"
 #include "CustomConstants.h"
 
 class HumidityTemperatureSensor
 {
-	const int _dhtSensorPin;
-	DHT _dhtSensor;
+	DHTesp _dhtSensor;
 
 public:
 	float temperature;
@@ -24,6 +23,8 @@ public:
 	HumidityTemperatureSensor();
 
 	void update(void);
+
+	void test(void);
 };
 
 #endif

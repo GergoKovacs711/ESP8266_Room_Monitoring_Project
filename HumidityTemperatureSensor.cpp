@@ -1,24 +1,33 @@
 #include "HumidityTemperatureSensor.h"
 
-HumidityTemperatureSensor::HumidityTemperatureSensor() :_dhtSensorPin(10),
-														_dhtSensor(CustomConstants::dhtPin,
-														CustomConstants::dhtType)
+HumidityTemperatureSensor::HumidityTemperatureSensor() :_dhtSensor()
 
 {
+	_dhtSensor.setup(CustomConstants::dhtPin, DHTesp::DHT11);
 }
 
 void HumidityTemperatureSensor::update(void)
 {
-	float tempTemperature = _dhtSensor.readTemperature();
-	float tempHumidity = _dhtSensor.readHumidity();
+	float tempTemperature = _dhtSensor.getTemperature();
+	float tempHumidity = _dhtSensor.getHumidity();
 
-	if (isnan(temperature) || isnan(tempHumidity)) {
+	temperature = tempTemperature;
+	humidity = tempHumidity;
+
+	if (isnan(tempTemperature))
+	{
 		temperature = 0.0;
+	}
+	if (isnan(tempHumidity))
+	{
 		humidity = 0.0;
 	}
-	else
-	{
-		temperature = tempTemperature;
-		humidity = tempHumidity;
-	}
+}
+
+void HumidityTemperatureSensor::test(void)
+{
+	this->update();
+	Serial.println("Humidity: " + String(humidity));
+	Serial.println("Temperature: " + String(temperature));
+
 }

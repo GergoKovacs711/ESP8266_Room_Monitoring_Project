@@ -18,6 +18,6 @@ namespace CustomConstants
 	const String javaServerIP = "192.168.38.152";
 	const short javaServerPort = 8081;
 
-	const uint8_t dhtPin = 4;
-	const uint8_t dhtType = 22;     //dht22 = 22; dht11 = 11; dht21 = 21; AM2301 = 21
+	const int dhtPin = 4;
+	const int dhtType = 22;     //dht22 = 22; dht11 = 11; dht21 = 21; AM2301 = 21
 }
