@@ -69,6 +69,12 @@
     <ClInclude Include="InitialSetup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="__vm\.ESP826_Room_Monitoring_Project.vsarduino.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HumidityTemperatureSensor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Util.cpp">
@@ -100,6 +106,9 @@
     </ClCompile>
     <ClCompile Include="CustomConstants.cpp">
       <Filter>Source Files\Constants</Filter>
+    </ClCompile>
+    <ClCompile Include="HumidityTemperatureSensor.cpp">
+      <Filter>Source Files\Sensors</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

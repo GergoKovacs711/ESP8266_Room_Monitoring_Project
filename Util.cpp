@@ -96,7 +96,9 @@ void Util::sendDataToSerial(float averageDecibels) {
 }
 
 void Util::sendDataToSerialDefault() {
-	Serial.println("SPL: " + String(sensorHandler.getAverageDecibels()));
+	Serial.print("SPL: " + String(sensorHandler.getAverageDecibels()));
+	Serial.print("   T: " + String(sensorHandler.getTemperature()));
+	Serial.println("   H: " + String(sensorHandler.getHumidity()));
 }
 
 

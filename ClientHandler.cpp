@@ -38,8 +38,6 @@ void ClientHandler::sendDataToJAVAServer(void)
 	{
 		if (wifiHandler.wifiClient.connect(CustomConstants::javaServerIP, CustomConstants::javaServerPort)) 
 		{
-			Serial.println("STOP NOW");
-			delay(3000);
 			ledHandler.setLEDColorTo(ledColor.pink);
 
 			String data = this->dataStringAppander();
@@ -84,7 +82,6 @@ void ClientHandler::sendDataToJAVAServer(void)
 String ClientHandler::dataStringAppander() 
 {	
 	DecibelData decibels = sensorHandler.getDecibelData();
-	Serial.println("array size " + String(decibels.getSize()));
 	int decibelValue_int = int(decibels.at(0));
 	String data = "d=" + String(decibelValue_int);
 
@@ -93,6 +90,8 @@ String ClientHandler::dataStringAppander()
 		decibelValue_int = int(decibels.at(counter));
 		data += "&d=" + String(decibelValue_int);
 	}
+	data += "&t=" + String(int(sensorHandler.getTemperature()));
+	data += "&h=" + String(int(sensorHandler.getHumidity()));
 
 	return data;
 }

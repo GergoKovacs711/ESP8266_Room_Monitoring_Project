@@ -12,9 +12,13 @@
 #include "Util.h"
 //#include "SerialCommunication.h"
 //#include "WifiHandler.h"
+#include "DHT_sensor_library_for_ESPx/DHTesp.h"
+
+DHTesp dht;
 
 void setup() 
 {
+  dht.setup(4, DHTesp::DHT11);
   ledHandler.init();                         // initializing LED HW, sets LED color to blue
   Util::init();								 // starting serial channel
   
@@ -27,6 +31,8 @@ void setup()
 
 void loop()
 {
+	//hdtTest();
+	//sensorHandler.hdtTester();
 	sensorHandler.updateSensors();
 	sensorHandler.updateLED();
 	Util::sendDataToSerialDefault();                      // writes volt and decibel date to serial port
@@ -34,7 +40,6 @@ void loop()
 
 	delay(50);
 }
-
 
 
 

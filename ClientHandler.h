@@ -14,6 +14,7 @@
 #include "SensorHandler.h"
 #include "DecibelData.h"
 #include "CustomConstants.h"
+#include "HumidityTemperatureSensor.h"
 
 class ClientHandler
 {
