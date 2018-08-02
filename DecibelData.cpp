@@ -6,9 +6,6 @@
 
 DecibelData::DecibelData(const double *array, int arraySize) : _size(arraySize)
 {
-	Serial.println("decibeldata size: " + String(_size));
-	Serial.println("arraysize parameter:" + String(arraySize));
-	
 	for (int counter = 0; counter < arraySize; counter++)
 	{
 		_decibels[counter] = array[counter];
