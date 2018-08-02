@@ -10,7 +10,7 @@ SensorHandler sensorHandler;
 
 SensorHandler::SensorHandler() : _splSensor(),
 								 _hdtSensor(),
-								 _splSampleCount(20),
+								 _splSampleCount(7),
 								 _readIndex(0), 
 								 _totalDecibels(0.0), 
 								 _averageDecibels(0.0)
@@ -84,9 +84,7 @@ void SensorHandler::sensorDataSmoother()
 
 DecibelData SensorHandler::getDecibelData()
 {
-	Serial.println("_splSampleCount : " + String(_splSampleCount));
 	DecibelData decibels(_splDecibelReadings, _splSampleCount);
-	Serial.println("DecibelDataSize: " + String(decibels.getSize()));
 	return decibels;
 }
 
@@ -98,5 +96,14 @@ void SensorHandler::changeSPLSampleWindow(int window)
 int SensorHandler::getSPLSampleWindow()
 {
 	return _splSensor.getSampleWindow();
+}
+
+void SensorHandler::hdtTester(void)
+{
+	while (true)
+	{
+		_hdtSensor.test();
+		delay(250);
+	}
 }
 

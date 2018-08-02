@@ -50,6 +50,7 @@ class SensorHandler
 
 	 void changeSPLSampleWindow(int window);
 	 int getSPLSampleWindow();
+	 void hdtTester(void);
 	 
 };
 
