@@ -13,20 +13,20 @@
 
 namespace Util
 {
-	void waitForInput(int delayTime);
-	int readUserInput_Yes_or_No();
-	int waitForUserInput_INT();
+	void serialInit(void);
+	void serialFlush(void);
 
+	void waitForInput(int delayTime);
 	bool waitForInputTimeOut(int delayTime, int timeOut);
-	void init(void);
-	void serialFlush();
-	int readIntFromSerial();
+	int waitForUserInput_INT(void);
+
+	int readIntFromSerial(void);
+	int readUserInput_Yes_or_No(void);
+
+	void sendDataToSerial(float averageDecibels);
+	void sendDataToSerialDefault(void);
 
 	bool isAnInteger(int inputByte);
-	void sendDataToSerial(float averageDecibels);
-	void sendDataToSerialDefault();
 }
-
-
 #endif
 

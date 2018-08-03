@@ -16,7 +16,7 @@
 class WifiHandler
 {
  public:
-	 void connect();
+	 void connect(void);
 
 	 WiFiClient wifiClient;
 	 ESP8266WiFiMulti ESPWifiMulti;

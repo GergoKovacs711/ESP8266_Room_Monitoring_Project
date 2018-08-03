@@ -13,14 +13,15 @@
 
 class InitialSetupClass
 {
- private:
-	 int sampleWindow;
-
  public:
-	void settingsMenu();
-	void changeSampleWindow();
-	void changeAvarageSampleCount();
-	void start();
+	void start(void);
+	void settingsMenu(void);
+
+	void changeSampleWindow(void);
+	void changeAvarageSampleCount(void);
+	
+private:
+	int _sampleWindow;
 };
 
 extern InitialSetupClass menu;

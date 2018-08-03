@@ -14,17 +14,16 @@
 
 class HumidityTemperatureSensor
 {
-	DHTesp _dhtSensor;
-
 public:
 	float temperature;
 	float humidity;
 
-	HumidityTemperatureSensor();
-
+	HumidityTemperatureSensor(void);
 	void update(void);
-
 	void test(void);
+
+private:
+	DHTesp _dhtSensor;
 };
 
 #endif

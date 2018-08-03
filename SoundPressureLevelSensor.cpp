@@ -21,7 +21,7 @@ void SoundPressureLevelSensor::changeSampleWindow(int window)
 		_sampleWindow = window;
 }
 
-int SoundPressureLevelSensor::getSampleWindow()
+int SoundPressureLevelSensor::getSampleWindow(void)
 {
 	return int(_sampleWindow);
 }

@@ -22,8 +22,6 @@ struct LEDColor
 	const RgbColor pink;
 	const RgbColor black;
 	const RgbColor defaultLEDColor;
-
-
 };
 
 extern LEDColor ledColor;

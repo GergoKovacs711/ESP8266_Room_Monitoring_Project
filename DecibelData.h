@@ -13,15 +13,15 @@
 
 class DecibelData
 {
- private:
-	 double _decibels[MAX_DECIBEL_SAMPLE_COUNT];
-	 const int _size;
- public:
-	 
-	 DecibelData(const double *array, int arraySize);
-	 double at(short place);
-	 int getSize();
+public:
+	double at(short place);
 
+	DecibelData(const double *array, int arraySize);
+	int getSize(void);
+
+ private:
+	 const int _size;
+	 double _decibels[MAX_DECIBEL_SAMPLE_COUNT];
 };
 #endif
 

@@ -3,7 +3,7 @@
 
 WifiHandler wifiHandler;
 
-void WifiHandler::connect()
+void WifiHandler::connect(void)
 {
 	WiFi.mode(WIFI_STA);
 	ESPWifiMulti.addAP(CustomConstants::wifi_ssid.c_str(), CustomConstants::wifi_pswd.c_str());

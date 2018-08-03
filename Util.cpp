@@ -14,7 +14,7 @@ void Util::waitForInput(int delayTime)
 	} while (!Serial.available());
 }
 
-int Util::readUserInput_Yes_or_No()
+int Util::readUserInput_Yes_or_No(void)
 {
 	int userInput = 0;
 	userInput = Serial.read();
@@ -33,7 +33,7 @@ int Util::readUserInput_Yes_or_No()
 
 }
 
-int Util::waitForUserInput_INT()
+int Util::waitForUserInput_INT(void)
 {
 	waitForInput(500);
 	int userInput = readIntFromSerial();
@@ -53,14 +53,14 @@ bool Util::waitForInputTimeOut(int delayTime, int timeOut)
 	return timeSpent < timeOut;
 }
 
-void Util::init(void)
+void Util::serialInit(void)
 {
 	Serial.begin(CustomConstants::baudRate);
 	Serial.println("Serial: OK");
 	delay(1000);
 }
 
-void Util::serialFlush()
+void Util::serialFlush(void)
 {
 	while (Serial.available() > 0)
 	{
@@ -68,7 +68,7 @@ void Util::serialFlush()
 	}
 }
 
-int Util::readIntFromSerial()
+int Util::readIntFromSerial(void)
 {
 	waitForInput(500);
 	unsigned int integerValue = 0;
@@ -95,7 +95,7 @@ void Util::sendDataToSerial(float averageDecibels) {
 	Serial.println("SPL: " + String(averageDecibels));
 }
 
-void Util::sendDataToSerialDefault() {
+void Util::sendDataToSerialDefault(void) {
 	Serial.print("SPL: " + String(sensorHandler.getAverageDecibels()));
 	Serial.print("   T: " + String(sensorHandler.getTemperature()));
 	Serial.println("   H: " + String(sensorHandler.getHumidity()));

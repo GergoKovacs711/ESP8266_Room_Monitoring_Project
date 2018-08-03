@@ -22,7 +22,7 @@ double DecibelData::at(short place)
 		return 0.0;
 }
 
-int DecibelData::getSize()
+int DecibelData::getSize(void)
 {
 	return _size;
 }

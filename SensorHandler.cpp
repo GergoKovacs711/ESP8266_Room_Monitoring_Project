@@ -16,7 +16,7 @@ SensorHandler::SensorHandler() : _splSensor(),
 								 _averageDecibels(0.0)
 {
 	this->init();
-;}
+}
 
 void SensorHandler::init(void)
 {
@@ -32,20 +32,20 @@ void SensorHandler::changeSampleCount(int sampleCount)
 		_splSampleCount = sampleCount;
 }
 
-int SensorHandler::getSampleCount()
+int SensorHandler::getSampleCount(void)
 {
 	return int(_splSampleCount);
 }
 
 
-void SensorHandler::updateSensors()
+void SensorHandler::updateSensors(void)
 {
 	_splSensor.update();                        // calculates volts from sensor data
 	_hdtSensor.update();
 	sensorDataSmoother();
 }
 
-void SensorHandler::updateLED()
+void SensorHandler::updateLED(void)
 {
 	ledHandler.updateLEDColorLinear(_averageDecibels);   // updates LED color according to decibel data, linear color gradient
 }
@@ -55,17 +55,17 @@ float SensorHandler::getAverageDecibels(void)
 	return (float)(_averageDecibels);
 }
 
-float SensorHandler::getHumidity()
+float SensorHandler::getHumidity(void)
 {
 	return _hdtSensor.humidity;
 }
 
-float SensorHandler::getTemperature()
+float SensorHandler::getTemperature(void)
 {
 	return _hdtSensor.temperature;
 }
 
-void SensorHandler::sensorDataSmoother()
+void SensorHandler::sensorDataSmoother(void)
 {
 	_totalDecibels = _totalDecibels - _splDecibelReadings[_readIndex];
 
@@ -82,7 +82,7 @@ void SensorHandler::sensorDataSmoother()
 	_averageDecibels = _totalDecibels / _splSampleCount * 1.0;
 }
 
-DecibelData SensorHandler::getDecibelData()
+DecibelData SensorHandler::getDecibelData(void)
 {
 	DecibelData decibels(_splDecibelReadings, _splSampleCount);
 	return decibels;
@@ -93,7 +93,7 @@ void SensorHandler::changeSPLSampleWindow(int window)
 	_splSensor.changeSampleWindow(window);
 }
 
-int SensorHandler::getSPLSampleWindow()
+int SensorHandler::getSPLSampleWindow(void)
 {
 	return _splSensor.getSampleWindow();
 }

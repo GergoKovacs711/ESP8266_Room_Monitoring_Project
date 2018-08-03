@@ -15,24 +15,6 @@
 
 class SensorHandler
 {	
- private:
-	 
-	 SoundPressureLevelSensor _splSensor;
-	 
-	 HumidityTemperatureSensor _hdtSensor;
-
-	 short _splSampleCount;
-	 //std::vector<double> _splDecibelReadings;
-	 double _splDecibelReadings [MAX_DECIBEL_SAMPLE_COUNT];
-	 short _readIndex;
-
-	 double _totalDecibels;
-	 double _averageDecibels;
-	 
-	 void sensorDataSmoother(void);
-
-	 void init(void);
-
  public:
 	 SensorHandler(void);
 
@@ -50,8 +32,24 @@ class SensorHandler
 
 	 void changeSPLSampleWindow(int window);
 	 int getSPLSampleWindow();
+
 	 void hdtTester(void);
-	 
+	
+private:
+
+	SoundPressureLevelSensor _splSensor;
+	HumidityTemperatureSensor _hdtSensor;
+
+	short _splSampleCount;
+	double _splDecibelReadings[MAX_DECIBEL_SAMPLE_COUNT];
+	short _readIndex;
+
+	double _totalDecibels;
+	double _averageDecibels;
+
+	void init(void);
+
+	void sensorDataSmoother(void);
 };
 
 extern SensorHandler sensorHandler;

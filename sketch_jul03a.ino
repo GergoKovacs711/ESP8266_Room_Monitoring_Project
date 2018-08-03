@@ -1,8 +1,4 @@
-//////////////////////////////////////////////////////
-////////////////////  Includes  //////////////////////
-//////////////////////////////////////////////////////
 
-//#include "CustomConstants.h"
 #include "InitialSetup.h"
 #include "DecibelData.h"
 #include "ClientHandler.h"
@@ -10,8 +6,6 @@
 #include "LEDHandler.h"
 #include "ThingSpeak.h"
 #include "Util.h"
-//#include "SerialCommunication.h"
-//#include "WifiHandler.h"
 #include "DHT_sensor_library_for_ESPx/DHTesp.h"
 
 DHTesp dht;
@@ -20,7 +14,7 @@ void setup()
 {
   dht.setup(4, DHTesp::DHT11);
   ledHandler.init();                         // initializing LED HW, sets LED color to blue
-  Util::init();								 // starting serial channel
+  Util::serialInit();								 // starting serial channel
   
   menu.start();							// the user may change some settings here
   wifiHandler.connect();

@@ -8,13 +8,13 @@ LEDHandler::LEDHandler(void) : _pixelLED(PIXEL_COUNT, PIXEL_PIN)
 {
 }
 
-void LEDHandler::init()
+void LEDHandler::init(void)
 {
 	_pixelLED.Begin();
 	setLEDColorTo(ledColor.blue);
 }
 
-void LEDHandler::start()
+void LEDHandler::start(void)
 {
 	setLEDColorTo(ledColor.black);
 }

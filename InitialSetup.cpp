@@ -5,7 +5,7 @@
 #include "InitialSetup.h"
 
 
-void InitialSetupClass::settingsMenu() {
+void InitialSetupClass::settingsMenu(void) {
 	Serial.println("Which parameter would you like to change? Enter the corresponding number.\n");
 	Serial.println("1. Sample window (in ms, 10-1000, default: 25)");
 	Serial.println("2. Avarage sample count (3-20, default: 7)");
@@ -38,7 +38,7 @@ void InitialSetupClass::settingsMenu() {
 }
 
 //---------------------------------------------------------------------------//
-void InitialSetupClass::changeSampleWindow() {
+void InitialSetupClass::changeSampleWindow(void) {
 	Serial.println("Enter a value for the sample window(10-1000, default: 25).");
 
 	if (!Util::waitForInputTimeOut(500, 10000))
@@ -65,7 +65,7 @@ void InitialSetupClass::changeSampleWindow() {
 }
 
 //---------------------------------------------------------------------------//
-void InitialSetupClass::changeAvarageSampleCount() {
+void InitialSetupClass::changeAvarageSampleCount(void) {
 	Serial.println("Enter a value for the sample count(3-20, default: 7).");
 	Serial.println(" ");
 	
@@ -90,7 +90,7 @@ void InitialSetupClass::changeAvarageSampleCount() {
 	}
 }
 
-void InitialSetupClass::start() {
+void InitialSetupClass::start(void) {
 	Serial.println("Do you wish to use different settings from the default ones? (y/n)");
 	boolean keepRunning = true;         // used to run the main while case
 	boolean firstRun = true;           // on the second run it goes back straight into settingsMenu()

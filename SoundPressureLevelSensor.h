@@ -11,6 +11,13 @@
 
 class SoundPressureLevelSensor
 {
+ public:
+	double getDBActual(void);
+	void update(void);
+
+	void changeSampleWindow(int window);
+	int getSampleWindow(void);
+
 private:
 	const short MICROPHONE_PIN = 0;           // the microphone amplifier output is connected to pin A0
 
@@ -21,15 +28,8 @@ private:
 
 	void updateVolts(void);
 	void updateDecibels(void);
+
 	int calculatePeakToPeak(void);
-
- public:
-	double getDBActual(void);
-	void update(void);
-
-	void changeSampleWindow(int window);
-	int getSampleWindow();
-
 	
 };
 

@@ -4,8 +4,8 @@
 
 #include "ClientHandler.h"
 
-ClientHandler::ClientHandler() : lastTimeDataWasSentToJavaServer_InMillis(0),
-								 timeWhenJAVAServerDownWasDetected_InMillis(0),
+ClientHandler::ClientHandler(void) : lastTimeDataWasSentToJavaServer_InMillis(0),
+								 timeWhenJavaServerDownWasDetected_InMillis(0),
 								 timeWhenNoServerConnectionWasDetected_InMillis(0),
 								 lastTimeDataWasSentToThingSpeak_InMillis(0),
 								 timeWhenThingSpeakServerDownWasDetected_InMillis(0),
@@ -15,7 +15,7 @@ ClientHandler::ClientHandler() : lastTimeDataWasSentToJavaServer_InMillis(0),
 
 {}
 
-void ClientHandler::init()
+void ClientHandler::init(void)
 {
 	noServerAvailable = true;
 	unsigned long mills = millis();
@@ -36,7 +36,7 @@ void ClientHandler::sendDataToJAVAServer(void)
 	if (millis() - lastTimeDataWasSentToJavaServer_InMillis > 1000
 		|| millis() - lastTimeDataWasSentToJavaServer_InMillis <= 0) 
 	{
-		if (wifiHandler.wifiClient.connect(CustomConstants::javaServerIP, CustomConstants::javaServerPort)) 
+		if (wifiHandler.wifiClient.connect(CustomConstants::javaServerIP, CustomConstants::javaServerPort))
 		{
 			ledHandler.setLEDColorTo(ledColor.pink);
 
@@ -73,13 +73,13 @@ void ClientHandler::sendDataToJAVAServer(void)
 		{
 			Serial.println("Could not connect to server!");
 
-			timeWhenJAVAServerDownWasDetected_InMillis = millis();
+			timeWhenJavaServerDownWasDetected_InMillis = millis();
 			javaServerUnavailable = true;
 		}
 	}
 }
 
-String ClientHandler::dataStringAppander() 
+String ClientHandler::dataStringAppander(void)
 {	
 	DecibelData decibels = sensorHandler.getDecibelData();
 	int decibelValue_int = int(decibels.at(0));
@@ -96,7 +96,7 @@ String ClientHandler::dataStringAppander()
 	return data;
 }
 
-void ClientHandler::uploadData()
+void ClientHandler::uploadData(void)
 {	
 	if (noServerAvailable) 
 	{
@@ -112,7 +112,7 @@ void ClientHandler::uploadData()
 	}
 }
 
-void ClientHandler::sendDataToServer()
+void ClientHandler::sendDataToServer(void)
 {
 	if (!javaServerUnavailable) 
 	{
@@ -120,7 +120,7 @@ void ClientHandler::sendDataToServer()
 	}
 	else 
 	{
-		int serverDowntime = millis() - timeWhenJAVAServerDownWasDetected_InMillis;
+		int serverDowntime = millis() - timeWhenJavaServerDownWasDetected_InMillis;
 		if (serverDowntime > 30000 || serverDowntime <= 0) 
 		{
 			sendDataToJAVAServer();
@@ -147,7 +147,7 @@ void ClientHandler::sendDataToServer()
 	}
 }
 
-void ClientHandler::sendDataToThingSpeak_http()
+void ClientHandler::sendDataToThingSpeak_http(void)
 {
 	if (millis() - lastTimeDataWasSentToThingSpeak_InMillis > 20000
 		|| millis() - lastTimeDataWasSentToThingSpeak_InMillis <= 0)

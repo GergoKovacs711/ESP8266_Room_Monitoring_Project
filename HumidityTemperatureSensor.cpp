@@ -1,6 +1,6 @@
 #include "HumidityTemperatureSensor.h"
 
-HumidityTemperatureSensor::HumidityTemperatureSensor() :_dhtSensor()
+HumidityTemperatureSensor::HumidityTemperatureSensor(void) :_dhtSensor()
 
 {
 	_dhtSensor.setup(CustomConstants::dhtPin, DHTesp::DHT11);
