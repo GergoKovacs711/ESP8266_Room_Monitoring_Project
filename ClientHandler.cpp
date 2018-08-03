@@ -45,18 +45,21 @@ void ClientHandler::sendDataToJAVAServer(void)
 			Serial.println("Connected to server. Sending data.");
 			Serial.println("Data being sent:" + data);
 
-			wifiHandler.wifiClient.print("POST /ServletExample/ESPServlet HTTP/1.1\n");
-			wifiHandler.wifiClient.print("Host: " + CustomConstants::javaServerIP + "\n");
-			wifiHandler.wifiClient.print("Content-Type: application/x-www-form-urlencoded\n");
-			wifiHandler.wifiClient.print("Content-Length: ");
-			wifiHandler.wifiClient.print(data.length());
-			wifiHandler.wifiClient.print("\n\n");
-			wifiHandler.wifiClient.println(data);
+			String tempData = "POST /ServletExample/ESPServlet HTTP/1.1\n";
+			tempData += "Host: " + String(CustomConstants::javaServerIP) + "\n";
+			tempData += "Content-Type: application/x-www-form-urlencoded\n";
+			tempData += "Content-Length: " + String(data.length()) + "\n\n" + data;
 
-			delay(200);
-
-			Serial.println("Data sent to server!");
-
+			if (wifiHandler.wifiClient.connected())
+			{
+				wifiHandler.wifiClient.println(tempData.c_str());
+				Serial.println("Data sent to server!");
+				delay(200);
+			}
+			else
+			{
+				Serial.println("Server connection lost before data sending!");
+			}
 			if (!wifiHandler.wifiClient.connected()) 
 			{
 				wifiHandler.wifiClient.stop();
@@ -103,16 +106,16 @@ void ClientHandler::uploadData(void)
 		int serversDowntime = millis() - timeWhenNoServerConnectionWasDetected_InMillis;
 		if (serversDowntime > 60000 || serversDowntime <= 0) 
 		{
-			this->sendDataToServer();
+			this->delegateToServer();
 		}
 	}
 	else 
 	{
-		this->sendDataToServer();
+		this->delegateToServer();
 	}
 }
 
-void ClientHandler::sendDataToServer(void)
+void ClientHandler::delegateToServer(void)
 {
 	if (!javaServerUnavailable) 
 	{

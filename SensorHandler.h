@@ -25,13 +25,13 @@ class SensorHandler
 	 void updateLED(void);
 
 	 float getAverageDecibels(void);
-	 float getHumidity();
-	 float getTemperature();
+	 float getHumidity(void);
+	 float getTemperature(void);
 
-	 DecibelData getDecibelData();
+	 DecibelData getDecibelData(void);
 
 	 void changeSPLSampleWindow(int window);
-	 int getSPLSampleWindow();
+	 int getSPLSampleWindow(void);
 
 	 void hdtTester(void);
 	

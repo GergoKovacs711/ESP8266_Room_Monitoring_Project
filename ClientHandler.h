@@ -16,13 +16,16 @@
 #include "CustomConstants.h"
 #include "HumidityTemperatureSensor.h"
 
+enum TargetServer;
+
 class ClientHandler
 {
 public:
 	ClientHandler(void);
 	void init(void);
 
-	void sendDataToServer(void);
+	void delegateToServer(void);
+	void sendDataToServer(TargetServer server);
 	void sendDataToJAVAServer(void);
 	void sendDataToThingSpeak_http(void);
 

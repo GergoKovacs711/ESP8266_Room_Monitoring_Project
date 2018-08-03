@@ -27,7 +27,7 @@ void HumidityTemperatureSensor::update(void)
 void HumidityTemperatureSensor::test(void)
 {
 	this->update();
+	Serial.println("\nStatus: " + String(_dhtSensor.getStatusString()));
 	Serial.println("Humidity: " + String(humidity));
 	Serial.println("Temperature: " + String(temperature));
-
 }

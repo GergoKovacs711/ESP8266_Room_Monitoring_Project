@@ -9,10 +9,11 @@
 #include "DHT_sensor_library_for_ESPx/DHTesp.h"
 
 DHTesp dht;
+uint8_t pin = 4;
 
 void setup() 
 {
-  dht.setup(4, DHTesp::DHT11);
+  dht.setup(pin, DHTesp::DHT11);
   ledHandler.init();                         // initializing LED HW, sets LED color to blue
   Util::serialInit();								 // starting serial channel
   
@@ -25,7 +26,6 @@ void setup()
 
 void loop()
 {
-	//hdtTest();
 	//sensorHandler.hdtTester();
 	sensorHandler.updateSensors();
 	sensorHandler.updateLED();
