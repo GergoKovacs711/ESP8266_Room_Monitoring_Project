@@ -20,24 +20,23 @@ ServerInfo::ServerInfo( String serverName,
 												 unavailable	(false)
 {}
 
-ServerInfo::ServerInfo() :  name			("Java"),
-							_URLheader		("/ServletExample/ESPServlet HTTP/1.1"),
-							_contentType	("application/x-www-form-urlencoded"),
+ServerInfo::ServerInfo() :  name			(CustomConstants::javaServerName),
+							_URLheader		(CustomConstants::javaServerURL),
+							_contentType	(CustomConstants::javaServerContentType),
 							ip				(CustomConstants::javaServerIP),
 							port			(CustomConstants::javaServerPort),
-							timeToWait		(10000),
+							timeToWait		(CustomConstants::javaServerTimeToWait),
 							unavailable		(false)
 {}
 
 ServerInfo& ServerInfo::getJavaServerInfo()
 {	
-	ServerInfo serverInfo(  "Java",
-							"/ServletExample/ESPServlet HTTP/1.1",
-							"application/x-www-form-urlencoded",
+	ServerInfo serverInfo ( CustomConstants::javaServerName,
+							CustomConstants::javaServerURL,
+							CustomConstants::javaServerContentType,
 							CustomConstants::javaServerIP,
 							CustomConstants::javaServerPort,
-							3000);
-								
+							CustomConstants::javaServerTimeToWait);
 	return serverInfo;
 }
 

@@ -10,7 +10,7 @@ SensorHandler sensorHandler;
 
 SensorHandler::SensorHandler() : _splSensor(),
 								 _hdtSensor(),
-								 _splSampleCount(20),
+								 _splSampleCount(MAX_DECIBEL_SAMPLE_COUNT),
 								 _readIndex(0), 
 								 _totalDecibels(0.0), 
 								 _averageDecibels(0.0)
@@ -20,7 +20,6 @@ SensorHandler::SensorHandler() : _splSensor(),
 
 void SensorHandler::init(void)
 {
-	//_splDecibelReadings.reserve(_splSampleCount);
 	for (auto &reading : _splDecibelReadings) {
 		reading = 0.0;
 	}
@@ -40,7 +39,7 @@ int SensorHandler::getSampleCount(void)
 
 void SensorHandler::updateSensors(void)
 {
-	_splSensor.update();                        // calculates volts from sensor data
+	_splSensor.update();                        
 	_hdtSensor.update();
 	sensorDataSmoother();
 }

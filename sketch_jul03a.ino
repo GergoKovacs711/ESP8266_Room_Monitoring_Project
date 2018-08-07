@@ -15,25 +15,24 @@ uint8_t pin = 4;
 
 void setup() 
 {
-  dht.setup(pin, DHTesp::DHT11);
-  ledHandler.init();                         // initializing LED HW, sets LED color to blue
-  Util::serialInit();								 // starting serial channel
+  dht.setup(pin, DHTesp::DHT11);		// initializes DHT sensor
+  ledHandler.init();                    // initializing LED HW, sets LED color to blue
+  Util::serialInit();					// starting serial channel
   
   menu.start();							// the user may change some settings here
-  wifiHandler.connect();
-  clientHandler.init();
-  //sensorHandler.init(sampleCount);
-  ledHandler.start();                        // sets LED color to black
+  wifiHandler.connect();				// connects to wifi
+  clientHandler.init();					// initializes client to be ready for connection
+
+  ledHandler.start();                   // sets LED color to black
 }
 
 void loop()
 {
-	//sensorHandler.hdtTester();
-	sensorHandler.updateSensors();
-	sensorHandler.updateLED();
-	Util::sendDataToSerialDefault();                      // writes volt and decibel date to serial port
-	clientHandler.uploadDataJavaServerOnly(20000);
-	//clientHandler.uploadData();
+	//sensorHandler.hdtTester();		// HDT sensor tester
+	sensorHandler.updateSensors();		// updates sensors
+	sensorHandler.updateLED();			// updates LED
+	Util::sendDataToSerialDefault();    // writes SPL, temperature and humiditay values to serial port
+	clientHandler.uploadData();			// sends data to the server
 
 	delay(50);
 }

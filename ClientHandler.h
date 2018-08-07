@@ -23,32 +23,14 @@ class ClientHandler
 public:
 	ClientHandler(void);
 	void init(void);
-
-	void javaInit();
-
-	void delegateToServer(void);
-	void sendDataToServer(ServerInfo &server);
-	void sendDataToJAVAServer(void);
-	void sendDataToThingSpeak_http(void);
-
-	void uploadData(void);
-	void uploadDataJavaServerOnly(int timeToWait);
-
-	String dataStringAppander(void);
+	void uploadData();
 
  private:
-	 unsigned long lastTimeDataWasSentToJavaServer_InMillis;
-	 unsigned long timeWhenJavaServerDownWasDetected_InMillis;
-	 unsigned long timeWhenNoServerConnectionWasDetected_InMillis;
-
-	 unsigned long lastTimeDataWasSentToThingSpeak_InMillis;
-	 unsigned long timeWhenThingSpeakServerDownWasDetected_InMillis;
-
-	 bool javaServerUnavailable;
-	 bool noServerAvailable;
-	 bool thingSpeakUnavailable;
-
 	 ServerInfo javaServer;
+	 int retryWindow;
+
+	 void sendDataToServer(ServerInfo &server);
+	 String dataStringAppander(void);
 };
 
 extern ClientHandler clientHandler;

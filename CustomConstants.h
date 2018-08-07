@@ -17,22 +17,22 @@ namespace CustomConstants
 #define MAX_DECIBEL_SAMPLE_COUNT 20
 
 	extern const unsigned long baudRate;
-	//const int MAX_DECIBEL_SAMPLE_COUNT;
 
 	extern const std::string wifi_ssid;
 	extern const std::string wifi_pswd;
 
-	extern const unsigned long thingSpeakChannelNumber;
-	extern const std::string thingSpeakWriteAPIKey;
-
-	extern const String thingSpeakApiURL;
-	extern const short thingSpeakPort;
-
-	extern const String javaServerIP;
-	extern const short javaServerPort;
-
 	extern const int dhtPin;
 	extern const int dhtType;
+
+	extern const String javaServerName;
+	extern const String javaServerURL;
+	extern const String javaServerContentType;
+	extern const String javaServerIP;
+	extern const short javaServerPort;
+	extern const int javaServerTimeToWait;
+
+	extern const int clientHandlerRetryWindow;
+	extern const int clientHandlerTargetMillsWindow;
 }
 
 #endif

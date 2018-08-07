@@ -5,8 +5,7 @@
 #include "LEDHandler.h"
 
 LEDHandler::LEDHandler(void) : _pixelLED(PIXEL_COUNT, PIXEL_PIN)
-{
-}
+{}
 
 void LEDHandler::init(void)
 {
