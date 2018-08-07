@@ -75,6 +75,12 @@
     <ClInclude Include="HumidityTemperatureSensor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ServerInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Util.cpp">
@@ -109,6 +115,9 @@
     </ClCompile>
     <ClCompile Include="HumidityTemperatureSensor.cpp">
       <Filter>Source Files\Sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerInfo.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

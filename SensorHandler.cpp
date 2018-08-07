@@ -10,7 +10,7 @@ SensorHandler sensorHandler;
 
 SensorHandler::SensorHandler() : _splSensor(),
 								 _hdtSensor(),
-								 _splSampleCount(7),
+								 _splSampleCount(20),
 								 _readIndex(0), 
 								 _totalDecibels(0.0), 
 								 _averageDecibels(0.0)

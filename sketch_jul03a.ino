@@ -1,4 +1,6 @@
 
+#include "ServerType.h"
+#include "ServerInfo.h"
 #include "InitialSetup.h"
 #include "DecibelData.h"
 #include "ClientHandler.h"
@@ -30,7 +32,8 @@ void loop()
 	sensorHandler.updateSensors();
 	sensorHandler.updateLED();
 	Util::sendDataToSerialDefault();                      // writes volt and decibel date to serial port
-	clientHandler.uploadData();
+	clientHandler.uploadDataJavaServerOnly(20000);
+	//clientHandler.uploadData();
 
 	delay(50);
 }

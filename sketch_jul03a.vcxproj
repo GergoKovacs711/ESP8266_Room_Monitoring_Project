@@ -117,6 +117,8 @@
     <ClInclude Include="LEDColor.h" />
     <ClInclude Include="LEDHandler.h" />
     <ClInclude Include="SensorHandler.h" />
+    <ClInclude Include="ServerInfo.h" />
+    <ClInclude Include="ServerType.h" />
     <ClInclude Include="SoundPressureLevelSensor.h" />
     <ClInclude Include="Util.h" />
     <ClInclude Include="WifiHandler.h" />
@@ -131,6 +133,7 @@
     <ClCompile Include="LEDColor.cpp" />
     <ClCompile Include="LEDHandler.cpp" />
     <ClCompile Include="SensorHandler.cpp" />
+    <ClCompile Include="ServerInfo.cpp" />
     <ClCompile Include="SoundPressureLevelSensor.cpp" />
     <ClCompile Include="CustomConstants.cpp" />
     <ClCompile Include="Util.cpp" />

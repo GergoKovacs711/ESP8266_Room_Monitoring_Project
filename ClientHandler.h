@@ -15,8 +15,8 @@
 #include "DecibelData.h"
 #include "CustomConstants.h"
 #include "HumidityTemperatureSensor.h"
+#include "ServerInfo.h"
 
-enum TargetServer;
 
 class ClientHandler
 {
@@ -24,12 +24,15 @@ public:
 	ClientHandler(void);
 	void init(void);
 
+	void javaInit();
+
 	void delegateToServer(void);
-	void sendDataToServer(TargetServer server);
+	void sendDataToServer(ServerInfo &server);
 	void sendDataToJAVAServer(void);
 	void sendDataToThingSpeak_http(void);
 
 	void uploadData(void);
+	void uploadDataJavaServerOnly(int timeToWait);
 
 	String dataStringAppander(void);
 
@@ -44,6 +47,8 @@ public:
 	 bool javaServerUnavailable;
 	 bool noServerAvailable;
 	 bool thingSpeakUnavailable;
+
+	 ServerInfo javaServer;
 };
 
 extern ClientHandler clientHandler;

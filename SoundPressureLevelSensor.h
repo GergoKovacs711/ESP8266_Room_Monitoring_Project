@@ -30,7 +30,6 @@ private:
 	void updateDecibels(void);
 
 	int calculatePeakToPeak(void);
-	
 };
 
 
