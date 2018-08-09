@@ -4,10 +4,13 @@
 
 #include "ClientHandler.h"
 
-ClientHandler::ClientHandler(void) : javaServer(),
-									 retryWindow(CustomConstants::clientHandlerRetryWindow)
+ClientHandler::ClientHandler(void) : _javaServer(),
+									 _retryWindow(CustomConstants::clientHandlerRetryWindow),
+									 _httpClient()
 
-{}
+{
+
+}
 
 void ClientHandler::init(void) 
 {
@@ -16,11 +19,11 @@ void ClientHandler::init(void)
 
 	if (targetMillis >= 0) {
 
-		javaServer.lastServerDown_InMillis = targetMillis;
+		_javaServer.lastServerDown_InMillis = targetMillis;
 	}
 	else
 	{
-		javaServer.lastServerDown_InMillis = 0;
+		_javaServer.lastServerDown_InMillis = 0;
 	}
 }
 
@@ -43,10 +46,11 @@ String ClientHandler::dataStringAppander(void)
 
 void ClientHandler::uploadData()
 {
-	int serverDowntime = millis() - javaServer.lastServerDown_InMillis;
-	if (serverDowntime > javaServer.timeToWait || serverDowntime <= 0)
+	int serverDowntime = millis() - _javaServer.lastServerDown_InMillis;
+	if (serverDowntime > _javaServer.timeToWait || serverDowntime <= 0)
 	{
-		this->sendDataToServer(javaServer);
+
+		this->sendDataToServer(_javaServer);
 	}
 }
 
@@ -55,54 +59,45 @@ void ClientHandler::sendDataToServer(ServerInfo &server)
 	if (millis() - server.lastTimeConnected_InMillis > server.timeToWait
 		|| millis() - server.lastTimeConnected_InMillis <= 0)
 	{
-		if (wifiHandler.wifiClient.connect(server.ip, server.port))
+		//_httpClient.begin(String("http://" + CustomConstants::javaHttpURL)
+						  //+ String (":" + CustomConstants::javaServerPort) +
+						  //"/ServletExample/ESPServlet");
+
+		_httpClient.begin("http://192.168.38.152:8081/ServletExample/ESPServlet");
+
+		ledHandler.setLEDColorTo(ledColor.blue);
+
+		Serial.println("Connected to " + String(server.name));
+		_httpClient.addHeader("Content-Type", "application/x-www-form-urlencoded");
+
+		_httpClient.setTimeout(CustomConstants::javaHttpTimeOut);
+
+		String data = this->dataStringAppander();
+
+		int httpStatus = _httpClient.POST(data);
+
+		if (httpStatus == HTTP_CODE_OK)
 		{
-			ledHandler.setLEDColorTo(ledColor.blue);
+			Serial.print("Data sent to server!");
+			Serial.println("Status code: " + String(httpStatus));
 
-			Serial.println("Connected to " + String(server.name));
-
-			String data = this->dataStringAppander();
-
-			String httpMessage = server.generateHttpPostMessage(data);
-			
-			if (wifiHandler.wifiClient.connected())
-			{
-				wifiHandler.wifiClient.println(httpMessage.c_str());
-				Serial.println("Data sent to server!");
-
-				server.lastTimeConnected_InMillis = millis();
-				server.unavailable = false;
-				delay(200);
-			}
-			else
-			{
-				Serial.println("Server connection lost before data sending!");
-				server.lastServerDown_InMillis = millis();
-				server.unavailable = true;
-			}
-
-			if (!wifiHandler.wifiClient.connected())
-			{
-				wifiHandler.wifiClient.stop();
-			}
-			else
-			{	
-				wifiHandler.wifiClient.flush();
-				wifiHandler.wifiClient.stop();
-			}
-
-			
-			ledHandler.setLEDColorTo(ledColor.green);
+			server.lastTimeConnected_InMillis = millis();
+			server.unavailable = false;
+			delay(200);
 		}
 		else
 		{
-			Serial.println("Could not connect to server!");
-
+			Serial.print("Data couldn't be sent to server!");
+			Serial.println("Status code: " + String(httpStatus));
 			server.lastServerDown_InMillis = millis();
 			server.unavailable = true;
 		}
+
+		_httpClient.end();
+
+		ledHandler.setLEDColorTo(ledColor.green);
 	}
 }
-
+		
 ClientHandler clientHandler;
 

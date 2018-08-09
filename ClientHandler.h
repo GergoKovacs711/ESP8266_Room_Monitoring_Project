@@ -16,7 +16,7 @@
 #include "CustomConstants.h"
 #include "HumidityTemperatureSensor.h"
 #include "ServerInfo.h"
-
+#include "ESP8266HTTPClient.h"
 
 class ClientHandler
 {
@@ -26,8 +26,9 @@ public:
 	void uploadData();
 
  private:
-	 ServerInfo javaServer;
-	 int retryWindow;
+	 ServerInfo _javaServer;
+	 int _retryWindow;
+	 HTTPClient _httpClient;
 
 	 void sendDataToServer(ServerInfo &server);
 	 String dataStringAppander(void);

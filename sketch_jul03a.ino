@@ -1,4 +1,5 @@
 
+#include <ESP8266HTTPClient.h>
 #include "ServerType.h"
 #include "ServerInfo.h"
 #include "InitialSetup.h"
@@ -10,12 +11,8 @@
 #include "Util.h"
 #include "DHT_sensor_library_for_ESPx/DHTesp.h"
 
-DHTesp dht;
-uint8_t pin = 4;
-
 void setup() 
 {
-  dht.setup(pin, DHTesp::DHT11);		// initializes DHT sensor
   ledHandler.init();                    // initializing LED HW, sets LED color to blue
   Util::serialInit();					// starting serial channel
   

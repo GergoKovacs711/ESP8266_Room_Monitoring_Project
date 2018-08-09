@@ -39,6 +39,5 @@ void LEDHandler::updateLEDColorLinear(double currentDB) {
 	_pixelLED.Show();
 }
 
-
 LEDHandler ledHandler;
 

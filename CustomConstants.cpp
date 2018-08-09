@@ -11,7 +11,6 @@ namespace CustomConstants
 	const int dhtPin = 4;
 	const int dhtType = 22;     //dht22 = 22; dht11 = 11; dht21 = 21; AM2301 = 21
 
-
 	const String javaServerName = "Java";
 	const String javaServerURL = "/ServletExample/ESPServlet HTTP/1.1";
 	const String javaServerContentType = "application/x-www-form-urlencoded";
@@ -21,4 +20,7 @@ namespace CustomConstants
 
 	const int clientHandlerRetryWindow = 10000;
 	const int clientHandlerTargetMillsWindow = 50000;
+
+	const String javaHttpURL = "/ServletExample/ESPServlet";
+	const int javaHttpTimeOut = 5000;
 }

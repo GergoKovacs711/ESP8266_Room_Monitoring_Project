@@ -19,17 +19,23 @@
     <Filter Include="Source Files\utilities\Free Functions">
       <UniqueIdentifier>{0cc07c7f-d93f-410d-867b-31bacc751e59}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\utilities\Handlers">
-      <UniqueIdentifier>{5663b7e8-c7e1-4703-90b7-b6be3624ba7c}</UniqueIdentifier>
+    <Filter Include="Source Files\Connectivity">
+      <UniqueIdentifier>{6a54367b-8996-49e9-8c28-3ab49c4dc7f4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\DataClasses">
-      <UniqueIdentifier>{e93f6d91-81c2-48ca-8c05-c81a11c15d42}</UniqueIdentifier>
+    <Filter Include="Source Files\ExternalHardware">
+      <UniqueIdentifier>{fbac2e02-fe4a-4fcb-b375-88ffe0fa3b5c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Sensors">
+    <Filter Include="Source Files\ExternalHardware\Sensors">
       <UniqueIdentifier>{b912e82f-770d-4740-ac7e-d2bf7dadc5dd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Constants">
+    <Filter Include="Source Files\ExternalHardware\Handlers">
+      <UniqueIdentifier>{5663b7e8-c7e1-4703-90b7-b6be3624ba7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\utilities\Constants">
       <UniqueIdentifier>{bbbfea6c-31eb-466d-9563-abb5ee3d31ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\utilities\DataClasses">
+      <UniqueIdentifier>{e93f6d91-81c2-48ca-8c05-c81a11c15d42}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -86,38 +92,38 @@
     <ClCompile Include="Util.cpp">
       <Filter>Source Files\utilities\Free Functions</Filter>
     </ClCompile>
-    <ClCompile Include="ClientHandler.cpp">
-      <Filter>Source Files\utilities\Handlers</Filter>
-    </ClCompile>
     <ClCompile Include="LEDHandler.cpp">
-      <Filter>Source Files\utilities\Handlers</Filter>
+      <Filter>Source Files\ExternalHardware\Handlers</Filter>
     </ClCompile>
     <ClCompile Include="SensorHandler.cpp">
-      <Filter>Source Files\utilities\Handlers</Filter>
-    </ClCompile>
-    <ClCompile Include="WifiHandler.cpp">
-      <Filter>Source Files\utilities\Handlers</Filter>
+      <Filter>Source Files\ExternalHardware\Handlers</Filter>
     </ClCompile>
     <ClCompile Include="DecibelData.cpp">
-      <Filter>Source Files\DataClasses</Filter>
+      <Filter>Source Files\utilities\DataClasses</Filter>
     </ClCompile>
     <ClCompile Include="LEDColor.cpp">
-      <Filter>Source Files\DataClasses</Filter>
+      <Filter>Source Files\utilities\DataClasses</Filter>
     </ClCompile>
     <ClCompile Include="SoundPressureLevelSensor.cpp">
-      <Filter>Source Files\Sensors</Filter>
-    </ClCompile>
-    <ClCompile Include="InitialSetup.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\ExternalHardware\Sensors</Filter>
     </ClCompile>
     <ClCompile Include="CustomConstants.cpp">
-      <Filter>Source Files\Constants</Filter>
+      <Filter>Source Files\utilities\Constants</Filter>
     </ClCompile>
     <ClCompile Include="HumidityTemperatureSensor.cpp">
-      <Filter>Source Files\Sensors</Filter>
+      <Filter>Source Files\ExternalHardware\Sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientHandler.cpp">
+      <Filter>Source Files\Connectivity</Filter>
+    </ClCompile>
+    <ClCompile Include="WifiHandler.cpp">
+      <Filter>Source Files\Connectivity</Filter>
     </ClCompile>
     <ClCompile Include="ServerInfo.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Connectivity</Filter>
+    </ClCompile>
+    <ClCompile Include="InitialSetup.cpp">
+      <Filter>Source Files\utilities</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

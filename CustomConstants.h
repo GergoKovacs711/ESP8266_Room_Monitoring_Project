@@ -14,7 +14,7 @@
 
 namespace CustomConstants
 {
-#define MAX_DECIBEL_SAMPLE_COUNT 20
+	#define MAX_DECIBEL_SAMPLE_COUNT 20
 
 	extern const unsigned long baudRate;
 
@@ -33,6 +33,9 @@ namespace CustomConstants
 
 	extern const int clientHandlerRetryWindow;
 	extern const int clientHandlerTargetMillsWindow;
+
+	extern const String javaHttpURL;
+	extern const int javaHttpTimeOut;
 }
 
 #endif
