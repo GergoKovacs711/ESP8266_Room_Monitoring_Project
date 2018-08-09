@@ -23,6 +23,7 @@ private:
 	unsigned long lastServerDown_InMillis;
 	
 	const unsigned int timeToWait;
+	const unsigned int timeOut;
 
 	const String name;
 	const String ip;
@@ -36,14 +37,14 @@ private:
 				String contentType,
 				String IP,
 				short port,
-				unsigned int time);
+				unsigned int timeToWait,
+				unsigned int timeOut);
 
 	static ServerInfo& getJavaServerInfo();
 	
 	String generateHttpPostMessage(String data);
 
-
-	
+	String getFullURL();
 };
 
 

@@ -30,12 +30,12 @@ namespace CustomConstants
 	extern const String javaServerIP;
 	extern const short javaServerPort;
 	extern const int javaServerTimeToWait;
+	extern const int javaServerTimeOut;
 
 	extern const int clientHandlerRetryWindow;
 	extern const int clientHandlerTargetMillsWindow;
 
-	extern const String javaHttpURL;
-	extern const int javaHttpTimeOut;
+	extern const String javaURLTrail;
 }
 
 #endif

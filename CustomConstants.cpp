@@ -16,11 +16,12 @@ namespace CustomConstants
 	const String javaServerContentType = "application/x-www-form-urlencoded";
 	const String javaServerIP = "192.168.38.152";
 	const short javaServerPort = 8081;
-	const int javaServerTimeToWait = 10000;
+	const int javaServerTimeToWait = 5000;
+	const int javaServerTimeOut = 3000;
 
 	const int clientHandlerRetryWindow = 10000;
 	const int clientHandlerTargetMillsWindow = 50000;
 
-	const String javaHttpURL = "/ServletExample/ESPServlet";
-	const int javaHttpTimeOut = 5000;
+	const String javaURLTrail = "/ServletExample/ESPServlet";
+	
 }

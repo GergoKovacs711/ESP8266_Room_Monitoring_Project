@@ -27,10 +27,12 @@ public:
 
  private:
 	 ServerInfo _javaServer;
-	 int _retryWindow;
 	 HTTPClient _httpClient;
 
+	 int _retryWindow;
+
 	 void sendDataToServer(ServerInfo &server);
+	 void httpStatusCodeHandler(int httpStatusHandler, ServerInfo &server);
 	 String dataStringAppander(void);
 };
 

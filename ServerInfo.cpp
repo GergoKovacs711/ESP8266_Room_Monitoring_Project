@@ -9,14 +9,15 @@ ServerInfo::ServerInfo( String serverName,
 						String contentType,
 						String IP,
 						short prt,
-						unsigned int time)
-
+						unsigned int timeToWait,
+						unsigned int timeOut)
 										     :	 name			(serverName),
 												 _URLheader		(URLHeader),
 												 _contentType	(contentType),
 												 ip				(IP),
 												 port			(prt),
-												 timeToWait		(time),
+												 timeToWait		(timeToWait),
+												 timeOut		(timeOut),
 												 unavailable	(false)
 {}
 
@@ -26,6 +27,7 @@ ServerInfo::ServerInfo() :  name			(CustomConstants::javaServerName),
 							ip				(CustomConstants::javaServerIP),
 							port			(CustomConstants::javaServerPort),
 							timeToWait		(CustomConstants::javaServerTimeToWait),
+							timeOut			(CustomConstants::javaServerTimeOut),
 							unavailable		(false)
 {}
 
@@ -36,7 +38,8 @@ ServerInfo& ServerInfo::getJavaServerInfo()
 							CustomConstants::javaServerContentType,
 							CustomConstants::javaServerIP,
 							CustomConstants::javaServerPort,
-							CustomConstants::javaServerTimeToWait);
+							CustomConstants::javaServerTimeToWait,
+							CustomConstants::javaServerTimeOut);
 	return serverInfo;
 }
 
@@ -50,6 +53,14 @@ String ServerInfo::generateHttpPostMessage(String data)
 	tempData += "Content-Length: " + String(data.length()) + "\n\n" + data;
 
 	return tempData;
+}
+
+String ServerInfo::getFullURL() {
+	return String ( "http://" 
+					+ CustomConstants::javaServerIP 
+					+ ":" 
+					+ CustomConstants::javaServerPort 
+					+ CustomConstants::javaURLTrail);
 }
 
 
