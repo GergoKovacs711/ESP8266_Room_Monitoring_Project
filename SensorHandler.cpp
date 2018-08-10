@@ -27,7 +27,7 @@ void SensorHandler::init(void)
 
 void SensorHandler::changeSampleCount(int sampleCount) 
 {
-	if(sampleCount <= 20 && sampleCount >= 1)
+	if(sampleCount <= MAX_DECIBEL_SAMPLE_COUNT && sampleCount >= 1)
 		_splSampleCount = sampleCount;
 }
 
@@ -64,18 +64,25 @@ float SensorHandler::getTemperature(void)
 	return _hdtSensor.temperature;
 }
 
+	// Were are using a moving average solution to smooth out spurious data.
+	// We add all the recorded decibel values from _splDecibelReadings..
+	// to _totalDecibels then divide it by the number of sample count.
+	// We go through the _splDecibelReadings array in a round robin manner..
+	// replacing the current element form the array with the reading from the...
+	// sensor. Then we substract the value from _totalDecibels so that we are..
+	// able to calculate an up-to-date _averageDecibels value.
 void SensorHandler::sensorDataSmoother(void)
 {
 	_totalDecibels = _totalDecibels - _splDecibelReadings[_readIndex];
 
-	_splDecibelReadings[_readIndex] = _splSensor.getDBActual();       // insert newest decibel value
+	_splDecibelReadings[_readIndex] = _splSensor.getDBActual();       
 
 	_totalDecibels = _totalDecibels + _splDecibelReadings[_readIndex];
 
-	_readIndex++;                                                       // advance to the next position in the array:
+	_readIndex++;                                                       
 
-	if (_readIndex >= _splSampleCount){ 							// if we're at the end of the array...
-		_readIndex = 0;                                                   // ...wrap around to the beginning:
+	if (_readIndex >= _splSampleCount){ 							
+		_readIndex = 0;                                                   
 	}
 	
 	_averageDecibels = _totalDecibels / _splSampleCount * 1.0;

@@ -8,17 +8,17 @@ HumidityTemperatureSensor::HumidityTemperatureSensor(void) :_dhtSensor()
 
 void HumidityTemperatureSensor::update(void)
 {
-	float tempTemperature = _dhtSensor.getTemperature();
-	float tempHumidity = _dhtSensor.getHumidity();
+	float readTemperature = _dhtSensor.getTemperature();
+	float readHumidity = _dhtSensor.getHumidity();
 
-	temperature = tempTemperature;
-	humidity = tempHumidity;
+	temperature = readTemperature;
+	humidity = readHumidity;
 
-	if (isnan(tempTemperature))
+	if (isnan(readTemperature))
 	{
 		temperature = 0.0;
 	}
-	if (isnan(tempHumidity))
+	if (isnan(readHumidity))
 	{
 		humidity = 0.0;
 	}

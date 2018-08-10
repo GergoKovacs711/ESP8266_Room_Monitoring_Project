@@ -18,9 +18,6 @@ class SensorHandler
  public:
 	 SensorHandler(void);
 
-	 void changeSampleCount(int sampleCount);
-	 int getSampleCount();
-
 	 void updateSensors(void);
 	 void updateLED(void);
 
@@ -30,13 +27,15 @@ class SensorHandler
 
 	 DecibelData getDecibelData(void);
 
+	 void changeSampleCount(int sampleCount);
+	 int getSampleCount();
+
 	 void changeSPLSampleWindow(int window);
 	 int getSPLSampleWindow(void);
 
 	 void hdtTester(void);
 	
 private:
-
 	SoundPressureLevelSensor _splSensor;
 	HumidityTemperatureSensor _hdtSensor;
 

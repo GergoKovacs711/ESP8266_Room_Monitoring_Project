@@ -12,7 +12,7 @@ namespace CustomConstants
 	const int dhtType = 22;     //dht22 = 22; dht11 = 11; dht21 = 21; AM2301 = 21
 
 	const String javaServerName = "Java";
-	const String javaServerURL = "/ServletExample/ESPServlet HTTP/1.1";
+	const String javaServerURL = "/ServletExample/ESPServlet";
 	const String javaServerContentType = "application/x-www-form-urlencoded";
 	const String javaServerIP = "192.168.38.152";
 	const short javaServerPort = 8081;
@@ -21,7 +21,4 @@ namespace CustomConstants
 
 	const int clientHandlerRetryWindow = 10000;
 	const int clientHandlerTargetMillsWindow = 50000;
-
-	const String javaURLTrail = "/ServletExample/ESPServlet";
-	
 }

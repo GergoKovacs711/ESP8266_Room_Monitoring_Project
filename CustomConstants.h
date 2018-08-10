@@ -34,8 +34,6 @@ namespace CustomConstants
 
 	extern const int clientHandlerRetryWindow;
 	extern const int clientHandlerTargetMillsWindow;
-
-	extern const String javaURLTrail;
 }
 
 #endif

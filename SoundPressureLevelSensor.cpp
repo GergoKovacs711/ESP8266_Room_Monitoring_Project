@@ -33,36 +33,41 @@ void SoundPressureLevelSensor::updateVolts(void)
 
 void SoundPressureLevelSensor::updateDecibels(void)
 {
-	if (_volt <= 0) _volt = 0.01;
+	// 0 would result in infinite _decibel value
+	if (_volt <= 0) _volt = 0.01;	
+
+	// Some of these constants were drawn from the spreedsheet of the sensor..
+	// and some were calculated during tuning the sensor
 	_decibel = log10(_volt / 0.00631) * 22 + 94 - 44 - 25;
 }
 
+	// This method takes the min and max values of the sensor..
+	// within a given timeframe and returns their difference.
 int SoundPressureLevelSensor::calculatePeakToPeak(void)
 {
-	int startMillis = millis();  // start of sample window
+	int startMillis = millis();  
 
-	int signalMax = 0;           // max read singal value
-	int signalMin = 1024;        // min read signal value
+	int signalMaxValue = 0;           
+	int signalMinValue = 1024;        
 
-	int sample = 0;
+	int currentReadSignalValue = 0;
 
-	// collect data for sampleWindow period of time
 	while (millis() - startMillis < _sampleWindow)
 	{
-		sample = analogRead(MICROPHONE_PIN);
-		if (sample < 1024)                // toss out spurious readings
+		currentReadSignalValue = analogRead(MICROPHONE_PIN);
+		if (currentReadSignalValue < 1024)    // filtering out of range values
 		{
-			if (sample > signalMax)
+			if (currentReadSignalValue > signalMaxValue)
 			{
-				signalMax = sample;         // save just the max levels
+				signalMaxValue = currentReadSignalValue;         
 			}
-			else if (sample < signalMin)
+			else if (currentReadSignalValue < signalMinValue)
 			{
-				signalMin = sample;         // save just the min levels
+				signalMinValue = currentReadSignalValue;        
 			}
 		}
 	}
-	return signalMax - signalMin;        // max 
+	return signalMaxValue - signalMinValue;        
 }
 
 

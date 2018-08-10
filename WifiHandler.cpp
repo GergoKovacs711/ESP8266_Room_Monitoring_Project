@@ -6,11 +6,10 @@ WifiHandler wifiHandler;
 void WifiHandler::connect(void)
 {
 	WiFi.mode(WIFI_STA);
-	ESPWifiMulti.addAP(CustomConstants::wifi_ssid.c_str(), CustomConstants::wifi_pswd.c_str());
+	ESPWifiMulti.addAP(CustomConstants::wifi_ssid.c_str(), 
+						CustomConstants::wifi_pswd.c_str());
 
-	Serial.println();
-	Serial.println();
-	Serial.print("Wait for WiFi... ");
+	Serial.print("\n\nWaiting for the WiFi... ");
 
 	while (ESPWifiMulti.run() != WL_CONNECTED)
 	{
@@ -18,11 +17,8 @@ void WifiHandler::connect(void)
 		delay(250);
 	}
 
-	Serial.println("");
-	Serial.println("WiFi connected");
-	Serial.println("IP address: ");
-	Serial.println(WiFi.localIP());
-
+	Serial.println("\nWiFi connected \nIP address: ");
+	Serial.println(WiFi.localIP().toString() + "\n");
 	delay(500);
 
 }

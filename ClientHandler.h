@@ -23,7 +23,8 @@ class ClientHandler
 public:
 	ClientHandler(void);
 	void init(void);
-	void uploadData();
+
+	void uploadData(void);
 
  private:
 	 ServerInfo _javaServer;
@@ -31,9 +32,9 @@ public:
 
 	 int _retryWindow;
 
+	 String dataStringAppander(void);
 	 void sendDataToServer(ServerInfo &server);
 	 void httpStatusCodeHandler(int httpStatusHandler, ServerInfo &server);
-	 String dataStringAppander(void);
 };
 
 extern ClientHandler clientHandler;

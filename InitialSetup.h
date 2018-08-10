@@ -19,9 +19,6 @@ class InitialSetupClass
 
 	void changeSampleWindow(void);
 	void changeAvarageSampleCount(void);
-	
-private:
-	int _sampleWindow;
 };
 
 extern InitialSetupClass menu;

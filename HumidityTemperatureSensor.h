@@ -19,6 +19,7 @@ public:
 	float humidity;
 
 	HumidityTemperatureSensor(void);
+
 	void update(void);
 	void test(void);
 

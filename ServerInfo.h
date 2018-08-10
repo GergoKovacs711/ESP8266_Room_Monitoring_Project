@@ -13,11 +13,6 @@
 
 class ServerInfo
 {
-private:
-	
-	const String _URLheader;
-	const String _contentType;
-
  public:
 	unsigned long lastTimeConnected_InMillis;
 	unsigned long lastServerDown_InMillis;
@@ -45,6 +40,10 @@ private:
 	String generateHttpPostMessage(String data);
 
 	String getFullURL();
+
+private:
+	const String _URLTrail;
+	const String _contentType;
 };
 
 

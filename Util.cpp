@@ -20,13 +20,16 @@ int Util::readUserInput_Yes_or_No(void)
 	userInput = Serial.read();
 	serialFlush();
 
+	// if 121 - y or 89 - Y then returns 1
 	if (userInput == 121 || userInput == 89)
 	{
 		return 1;
 	}
-	else if (userInput == 78 || 110) {
+	// if 110 - n or 78 - N then returns 2
+	else if (userInput == 78 || userInput == 110) {
 		return 2;
 	}
+	// if anything else then returns -1
 	else {
 		return -1;
 	}

@@ -12,8 +12,8 @@
 class SoundPressureLevelSensor
 {
  public:
-	double getDBActual(void);
 	void update(void);
+	double getDBActual(void);
 
 	void changeSampleWindow(int window);
 	int getSampleWindow(void);

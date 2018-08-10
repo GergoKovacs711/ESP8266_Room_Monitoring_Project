@@ -16,7 +16,7 @@ class LEDHandler
  public:
 	LEDHandler(void);
 
-	void init(void );
+	void init(void);
 	void start(void);
 
 	void setLEDColorTo(const RgbColor &rgb_ledColor);

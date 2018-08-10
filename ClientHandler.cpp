@@ -39,7 +39,7 @@ String ClientHandler::dataStringAppander(void)
 	return data;
 }
 
-void ClientHandler::uploadData()
+void ClientHandler::uploadData(void)
 {
 	int serverDowntime = millis() - _javaServer.lastServerDown_InMillis;
 	if (serverDowntime > _javaServer.timeToWait || serverDowntime <= 0)
@@ -53,7 +53,7 @@ void ClientHandler::sendDataToServer(ServerInfo &server)
 	if (millis() - server.lastTimeConnected_InMillis > server.timeToWait
 		|| millis() - server.lastTimeConnected_InMillis <= 0)
 	{
-		Serial.println("Connecting to " + String(server.name) + " server..");
+		Serial.println("\nConnecting to " + String(server.name) + " server..");
 		ledHandler.setLEDColorTo(ledColor.pink);
 
 		_httpClient.begin(server.getFullURL());
@@ -62,7 +62,7 @@ void ClientHandler::sendDataToServer(ServerInfo &server)
 
 		String data = this->dataStringAppander();
 
-		Serial.println("Data being sent: " + String(data));
+		Serial.println("Data being sent: " + String(data) + "\n");
 
 		int httpStatus = _httpClient.POST(data);
 
@@ -79,7 +79,7 @@ void ClientHandler::httpStatusCodeHandler(int httpStatus, ServerInfo &server) {
 	{
 	case HTTP_CODE_OK:
 		Serial.print("Data sent to server! ");
-		Serial.print("Status code: " + String(httpStatus) + "\n");
+		Serial.println("Status code: " + String(httpStatus) + "\n");
 
 		server.lastTimeConnected_InMillis = millis();
 		server.unavailable = false;
@@ -88,7 +88,7 @@ void ClientHandler::httpStatusCodeHandler(int httpStatus, ServerInfo &server) {
 
 	case HTTPC_ERROR_CONNECTION_REFUSED:
 		Serial.print("Server refused the connection or server is unreachable! ");
-		Serial.print("Status code: " + String(httpStatus) + "\n");
+		Serial.println("Status code: " + String(httpStatus) + "\n");
 
 		server.lastServerDown_InMillis = millis();
 		server.unavailable = true;
@@ -96,7 +96,7 @@ void ClientHandler::httpStatusCodeHandler(int httpStatus, ServerInfo &server) {
 
 	default:
 		Serial.print("Unexpected server response!");
-		Serial.print("Status code: " + String(httpStatus) + "\n");
+		Serial.println("Status code: " + String(httpStatus) + "\n");
 
 		server.lastServerDown_InMillis = millis();
 		server.unavailable = true;

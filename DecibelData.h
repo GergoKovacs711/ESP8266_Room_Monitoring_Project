@@ -14,9 +14,9 @@
 class DecibelData
 {
 public:
-	double at(short place);
-
 	DecibelData(const double *array, int arraySize);
+	
+	double at(short place);
 	int getSize(void);
 
  private:
