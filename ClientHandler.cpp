@@ -4,9 +4,9 @@
 
 #include "ClientHandler.h"
 
-ClientHandler::ClientHandler(void) : _javaServer(),
-									 _retryWindow(CustomConstants::clientHandlerRetryWindow),
-									 _httpClient()
+ClientHandler::ClientHandler(void) : 	_javaServer(),
+					_retryWindow(CustomConstants::clientHandlerRetryWindow),
+					_httpClient()
 {}
 
 void ClientHandler::init(void) 
